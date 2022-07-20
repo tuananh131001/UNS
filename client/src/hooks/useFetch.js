@@ -10,4 +10,4 @@ const useGetPhotos = (onSuccess, onError) => {
   });
 };
 
-export { useGetPhotos };
+export { useGetPhotos }
