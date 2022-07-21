@@ -1,6 +1,6 @@
-import { getAllPhotos } from "../api/photoAPI";
+import { getAllPhotos, postPhoto } from "../api/photoAPI";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 // Custom hook get photo
 const useGetPhotos = (onSuccess, onError) => {
@@ -9,5 +9,19 @@ const useGetPhotos = (onSuccess, onError) => {
     onError: onError,
   });
 };
+const useCreatePhoto = () => {
+  const queryClient = useQueryClient();
+  return useMutation(postPhoto, {
+    onSuccess: (newData) => {
+      //  queryClient.invalidateQueries(["photos"])
+      queryClient.setQueryData(["photos"], (oldData) => {
+        return {
+          ...oldData,
+          data: [...oldData.data, newData.data],
+        };
+      });
+    },
+  });
+};
 
-export { useGetPhotos }
+export { useGetPhotos, useCreatePhoto };

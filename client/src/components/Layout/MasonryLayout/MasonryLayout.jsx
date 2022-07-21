@@ -14,7 +14,7 @@ function MasonryLayout() {
   return (
     <div>
       <Mansory>
-        {jobs.data.map((photo) => (
+        {jobs.data?.map((photo) => (
           <Image src={photo.url} key={photo.name}></Image>
         ))}
       </Mansory>
