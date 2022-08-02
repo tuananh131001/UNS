@@ -1,10 +1,7 @@
 import React from "react";
-import { useCreatePhoto } from "../../../hooks/useFetch";
 import { Button } from "../../Button/Button.style";
 import { StyledHeader } from "./Header.style";
-import Form from '../../Form/Form'
-function Header() {
-  const mutation = useCreatePhoto()
+function Header({ setIsModalOpen }) {
   return (
     <>
       <StyledHeader>
@@ -41,11 +38,9 @@ function Header() {
             </clipPath>
           </defs>
         </svg>
-      <Button onClick={()=>{mutation.mutate({
-        name: "Sir ma",
-        url: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
-      })}} green>Add a photo</Button>
-      <Form></Form>
+        <Button onClick={() => setIsModalOpen(true)} green>
+          Add a photo
+        </Button>
       </StyledHeader>
     </>
   );
