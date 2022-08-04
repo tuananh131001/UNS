@@ -1,9 +1,11 @@
 import React from "react";
 import { useGetPhotos } from "../../../hooks/useFetch";
-import { Mansory, Image } from "./Masonry.style";
+import ImageWrapper from "../../Image/ImageWrapper";
+import { Mansory } from "./Masonry.style";
 
 function MasonryLayout() {
   const { data: jobs, status } = useGetPhotos();
+
   if (status == "loading") {
     return <p>Loading...</p>;
   }
@@ -13,10 +15,9 @@ function MasonryLayout() {
 
   return (
     <div>
-      
       <Mansory>
         {jobs.data?.map((photo) => (
-          <Image src={photo.url} key={photo.name}></Image>
+          <ImageWrapper photo={photo} key={photo._id}></ImageWrapper>
         ))}
       </Mansory>
     </div>

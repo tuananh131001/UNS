@@ -4,13 +4,14 @@ import { StyledFormContent } from "./StyledFormContent.style";
 import { StyledInput } from "./StyledInput.style";
 import { useCreatePhoto } from "../../hooks/useFetch";
 import { useForm } from "react-hook-form";
-function Form() {
+function Form({setIsModalOpen}) {
   const { register, handleSubmit } = useForm();
   const mutation = useCreatePhoto();
 
   const onSubmit = (data) => {
     mutation.mutate(data);
     console.log(data);
+    setIsModalOpen(false)
   };
   return (
     <>

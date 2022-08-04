@@ -1,4 +1,4 @@
-import { getAllPhotos, postPhoto } from "../api/photoAPI";
+import { getAllPhotos, postPhoto, deletePhoto } from "../api/photoAPI";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -12,16 +12,23 @@ const useGetPhotos = (onSuccess, onError) => {
 const useCreatePhoto = () => {
   const queryClient = useQueryClient();
   return useMutation(postPhoto, {
-    onSuccess: (newData) => {
-      //  queryClient.invalidateQueries(["photos"])
-      queryClient.setQueryData(["photos"], (oldData) => {
-        return {
-          ...oldData,
-          data: [...oldData.data, newData.data],
-        };
-      });
+    onSuccess: () => {
+      queryClient.invalidateQueries(["photos"]);
+      // queryClient.setQueryData(["photos"], (oldData) => {
+      //   return {
+      //     ...oldData,
+      //     data: [...oldData.data, newData.data],
+      //   };
+      // });
     },
   });
 };
-
-export { useGetPhotos, useCreatePhoto };
+const useDeletePhoto = () => {
+  const queryClient = useQueryClient();
+  return useMutation(deletePhoto, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["photos"]);
+    },
+  });
+};
+export { useGetPhotos, useCreatePhoto, useDeletePhoto };

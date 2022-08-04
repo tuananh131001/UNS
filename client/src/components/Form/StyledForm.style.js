@@ -11,4 +11,5 @@ export const StyledForm = styled.div`
   flex-direction: column;
   gap:.5rem;
   border-radius:10px;
+  z-index:99;
 `;

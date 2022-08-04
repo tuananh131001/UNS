@@ -7,8 +7,8 @@ function Main() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <main>
-      {isModalOpen && <BlurBackground onClick={() => setIsModalOpen(false)} />}
-      {isModalOpen && <Form />}
+      {isModalOpen && <BlurBackground form  onClick={() => setIsModalOpen(false)} />}
+      {isModalOpen && <Form setIsModalOpen={setIsModalOpen}/>}
 
       <Header setIsModalOpen={setIsModalOpen}  />
       <Layout />
