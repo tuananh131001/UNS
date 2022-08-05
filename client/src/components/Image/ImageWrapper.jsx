@@ -25,7 +25,6 @@ function ImageWrapper({ photo }) {
       }}
     >
       <Image src={photo.url}></Image>
-      
 
       {isHoverImage ? (
         <>

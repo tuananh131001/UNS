@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../Button/Button.style";
+import Search from "../../Search/Search";
 import { StyledHeader } from "./Header.style";
 function Header({ setIsModalOpen }) {
   return (
@@ -38,6 +39,7 @@ function Header({ setIsModalOpen }) {
             </clipPath>
           </defs>
         </svg>
+        <Search></Search>
         <Button onClick={() => setIsModalOpen(true)} green>
           Add a photo
         </Button>

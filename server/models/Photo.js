@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
-const PhotoEle = new mongoose.Schema({
-  name: String,
-  url: String,
-});
-export const Photo = mongoose.model("Photo",PhotoEle)
- 
+const PhotoEle = new mongoose.Schema(
+  {
+    name: String,
+    url: String,
+  },
+  { timestamps: true }
+);
+export const Photo = mongoose.model("Photo", PhotoEle);
