@@ -7,7 +7,7 @@ export const Button = styled.button`
 
   color: ${(props) => (props.green ? "white" : null)};
   color: ${(props) => (props.red ? "white" : null)};
-
+  width:fit-content;
   font-size: 1em;
   padding: 1em 1em;
   border: 0 solid;

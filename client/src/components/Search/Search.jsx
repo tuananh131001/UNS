@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGetPhotoByName } from "../../hooks/useFetch";
-import { StyledInput } from "../Form/StyledInput.style";
-import { StyledSearchBar } from "./Search.style";
+import { StyledSearch } from "../Form/StyledInput.style";
 function Search() {
   const [searchResult, setSearchResult] = useState("");
   const mutation = useGetPhotoByName();
@@ -12,10 +11,11 @@ function Search() {
   return (
     <>
       {" "}
-      <StyledInput
+      <StyledSearch
         type="text"
         value={searchResult}
         onChange={(x) => setSearchResult(x.target.value)}
+        placeholder="Search by name"
       />
     </>
   );

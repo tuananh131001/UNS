@@ -1,6 +1,6 @@
 import React from "react";
-import { useGetPhotos } from "../../../hooks/useFetch";
-import ImageWrapper from "../../Image/ImageWrapper";
+import { useGetPhotos } from "../../hooks/useFetch";
+import ImageWrapper from "../Image/ImageWrapper";
 import { Mansory } from "./Masonry.style";
 
 function MasonryLayout() {

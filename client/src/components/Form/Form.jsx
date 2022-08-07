@@ -4,6 +4,8 @@ import { StyledFormContent } from "./StyledFormContent.style";
 import { StyledInput } from "./StyledInput.style";
 import { useCreatePhoto } from "../../hooks/useFetch";
 import { useForm } from "react-hook-form";
+import { Button } from "../Button/Button.style";
+import { StyledFormButton } from "./FormButton.style";
 function Form({ setIsModalOpen }) {
   const { register, handleSubmit } = useForm();
   const mutation = useCreatePhoto();
@@ -23,7 +25,12 @@ function Form({ setIsModalOpen }) {
           <StyledInput type="text" id="label" {...register("name")} />
           <label htmlFor="label">Photo URL</label>
           <StyledInput type="text" id="label" {...register("url")} />
-          <StyledInput type="submit"></StyledInput>
+          <StyledFormButton>
+            <Button>Cancel</Button>
+            <Button type="submit" green>
+              Submit
+            </Button>
+          </StyledFormButton>
         </StyledFormContent>
       </StyledForm>
     </>

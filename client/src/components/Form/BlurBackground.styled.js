@@ -4,7 +4,7 @@ export const BlurBackground = styled.div`
   z-index: ${(props) => (props.form ? "96" : "1")};
   height: ${(props) => (props.form ? "100%" : "99%")};
   width: 100%;
-  top: ${(props) => (props.form ? "98" : 0)};
+  top: ${(props) => (props.form ? "95" : 0)};
   border-radius: ${(props) => (props.form ? "0" : "10px")};
   background-color: rgba(0, 0, 0, 0.5);
 `;

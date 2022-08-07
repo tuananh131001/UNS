@@ -5,7 +5,6 @@ export const postPhoto = (req, res) => {
   const photo = new Photo(req.body);
   try {
     const newPhoto = photo.save();
-    console.log(newPhoto.createdAt); // 2022-02-26T16:37:48.244Z
     res.status(200).json(newPhoto);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -27,16 +26,16 @@ export const getPhotoByName = async (req, res) => {
     let photos;
     let name = req.body.name;
     if (name == "") {
-      photos = await Photo.find();
+      photos = await Photo.find().sort({ createdAt: -1 });
     } else {
       photos = await Photo.find({
         name: {
           $regex: `${name}`,
           $options: "i",
         },
-      });
+      }).sort({ createdAt: -1 });
     }
-    console.log(photos)
+    console.log(photos);
     if (photos != null) {
       res.status(200).send(photos);
     }
