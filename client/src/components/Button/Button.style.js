@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${(props) => (props.green ? "#3DB46D" : null)};
   background: ${(props) => (props.red ? "red" : null)};

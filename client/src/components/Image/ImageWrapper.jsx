@@ -6,18 +6,18 @@ import { Image } from "../MasonryLayout/Masonry.style";
 import PropTypes from "prop-types";
 import { StyledText } from "./Text.style";
 import { BlurBackground } from "../Form/BlurBackground.styled";
-import DeleteForm from "../DeleteForm/DeleteForm";
+import { useDispatch } from "react-redux";
+import { toggleModal, setId } from "../../features/popupSlice";
 ImageWrapper.propTypes = {
   photo: PropTypes.any,
 };
 function ImageWrapper({ photo }) {
   const [isHoverImage, setHoverImage] = useState(false);
-  const [isDeleteFormOpen, setDeleteFormOpen] = useState(false);
-
-  const mutation = useDeletePhoto();
+  const dispatch = useDispatch();
   const handleDelete = (_id) => {
-    setDeleteFormOpen(true)
+    dispatch(toggleModal());
     // mutation.mutate(_id)
+    dispatch(setId(photo._id));
   };
   return (
     // When hover set state to appear or hide the button delete
@@ -29,14 +29,10 @@ function ImageWrapper({ photo }) {
         setHoverImage(false);
       }}
     >
-      
-      {isDeleteFormOpen ? <DeleteForm></DeleteForm> : null}
-
       {isHoverImage ? (
         <>
-          
           <BlurBackground></BlurBackground>
-          <StyledDeleteButton onClick={() => handleDelete(photo._id)}>
+          <StyledDeleteButton onClick={() => handleDelete()}>
             delete
           </StyledDeleteButton>
 

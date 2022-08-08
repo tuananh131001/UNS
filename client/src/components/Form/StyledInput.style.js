@@ -10,4 +10,5 @@ export const StyledSearch = styled(StyledInput)`
     no-repeat 5px 12px;
   background-size: 25px;
   padding-left: 30px;
+  margin:.5em;
 `;
