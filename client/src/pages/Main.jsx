@@ -6,6 +6,7 @@ import Layout from "../components/MasonryLayout/MasonryLayout";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteForm from "../components/DeleteForm/DeleteForm";
 import { toggleModal } from "../features/popupSlice";
+import { StyledMain } from "./Main.style";
 
 function Main() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,19 +15,23 @@ function Main() {
 
   console.log(popup);
   return (
-    <main>
+    <StyledMain>
       {isModalOpen && (
-        <BlurBackground form onClick={() => setIsModalOpen(false)} />
+        <div className="form-wrapper">
+          <BlurBackground form onClick={() => setIsModalOpen(false)} />
+          <Form setIsModalOpen={setIsModalOpen} />
+        </div>
       )}
       {popup && (
-        <BlurBackground form onClick={() => dispatch(toggleModal())} />
+        <div className="form-wrapper">
+          <BlurBackground form onClick={() => dispatch(toggleModal())} />
+          <DeleteForm></DeleteForm>
+        </div>
       )}
-      {isModalOpen && <Form setIsModalOpen={setIsModalOpen} />}
-      {popup && <DeleteForm></DeleteForm>}
       {/* <DeleteForm></DeleteForm> */}
       <Header setIsModalOpen={setIsModalOpen} />
       <Layout />
-    </main>
+    </StyledMain>
   );
 }
 
